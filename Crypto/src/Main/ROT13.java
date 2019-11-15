@@ -1,3 +1,5 @@
+package Main;
+
 import static java.lang.Character.toLowerCase;
 
 public class ROT13  {
@@ -72,27 +74,8 @@ public class ROT13  {
     }
 
     public static String rotate(String s, Character c) {
-        for (int i = 0; i < s.length(); i++){
-            StringBuilder sb = new StringBuilder();
-            int j = i;
-            int k = 0;
-
-            for (int k2 = j; k2 < s.length(); k2++) {
-                sb.insert(k, s.charAt(j));
-                k++;
-                j++;
-            }
-
-            j = 0;
-            while (j < i) {
-                sb.insert(k, s.charAt(j));
-                j++;
-                k++;
-                sb.append(c);
-            }
-            return sb.toString();
-        }
-        return null;
+        int endIndex = s.indexOf(c);
+        return s.substring(endIndex) + s.substring(0, endIndex);
     }
 
     private String substituteIn(String text, String startUpper, String registerUpper, String startLower, String registerlower){
